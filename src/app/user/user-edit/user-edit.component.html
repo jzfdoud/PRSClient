@@ -1,0 +1,50 @@
+<app-menu></app-menu>
+<div id="component">
+    <span class="h4">{{pageTitle}}</span>
+    <span> | </span>
+    <a routerLink="/user/list"> Back to List</a>
+    <table *ngIf="user" class="table table-sm">
+        <tr>
+            <th>Id</th>
+            <td><input [(ngModel)]="user.id" type="text" disabled></td>
+        </tr>
+        <tr>
+            <th>UserName</th>
+            <td><input [(ngModel)]="user.userName" type="text"></td>
+        </tr>
+        <tr>
+            <th>Password</th>
+            <td><input [(ngModel)]="user.password" type="password" disabled></td>
+        </tr>
+        <tr>
+            <th>FirstName</th>
+            <td><input [(ngModel)]="user.firstName" type="text"></td>
+        </tr>
+        <tr>
+            <th>LastName</th>
+            <td><input [(ngModel)]="user.lastName" type="text"></td>
+        </tr>
+        <tr>
+            <th>Phone</th>
+            <td><input [(ngModel)]="user.phone" type="text"></td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td><input [(ngModel)]="user.email" type="text"></td>
+        </tr>
+        <tr>
+            <th>Reviewer?</th>
+            <td><input [(ngModel)]="user.isReviewer" type="checkbox"></td>
+        </tr>
+        <tr>
+            <th>Admin?</th>
+            <td><input [(ngModel)]="user.isAdmin" type="checkbox"></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button (click)="save()" class="btn btn-primary">Save</button>
+            </td>
+        </tr>
+    </table>
+
+</div>

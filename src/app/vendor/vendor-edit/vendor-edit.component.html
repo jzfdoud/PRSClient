@@ -1,0 +1,49 @@
+<app-menu></app-menu>
+<div>
+    <span class="h4">{{pageTitle}}</span>
+    <span> | </span>
+    <a routerLink="/vendor/list"> Back to List</a>
+    <table *ngIf="vendor" class="table table-sm">
+        <tr>
+            <th>Id</th>
+            <td><input [(ngModel)]="vendor.id" type="text" disabled></td>
+        </tr>
+        <tr>
+            <th>Code</th>
+            <td><input [(ngModel)]="vendor.code" type="text"></td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <td><input [(ngModel)]="vendor.name" type="text"></td>
+        </tr>
+        <tr>
+            <th>Address</th>
+            <td><input [(ngModel)]="vendor.address" type="text"></td>
+        </tr>
+        <tr>
+            <th>City</th>
+            <td><input [(ngModel)]="vendor.city" type="text"></td>
+        </tr>
+        <tr>
+            <th>State</th>
+            <td><input [(ngModel)]="vendor.state" type="text"></td>
+        </tr>
+        <tr>
+            <th>ZipCode</th>
+            <td><input [(ngModel)]="vendor.zip" type="text"></td>
+        </tr>
+        <tr>
+            <th>Phone</th>
+            <td><input [(ngModel)]="vendor.phone" type="text"></td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td><input [(ngModel)]="vendor.email" type="text"></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button (click)="save()" class="btn btn-primary">Save</button>
+            </td>
+        </tr>
+    </table>
+</div>

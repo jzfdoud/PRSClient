@@ -1,0 +1,36 @@
+<app-menu></app-menu>
+<div id="component">
+    <span class="h4">{{pageTitle}}</span>
+    <span>  |  </span>
+    <a routerLink="/vendor/create">New Vendor</a>
+    <span>  |  </span>
+    <input [(ngModel)]="searchCriteria" type="text" placeholder="Search">
+    <table class="table table-sm">
+        <tr>
+            <th><a (click)="sort('id')" class="clickable">Id</a></th>
+            <th><a (click)="sort('code')" class="clickable">Code</a></th>
+            <th><a (click)="sort('name')" class="clickable">Name</a></th>
+            <th><a (click)="sort('address')" class="clickable">Address</a></th>
+            <th><a (click)="sort('city')" class="clickable">City</a></th>
+            <th><a (click)="sort('state')" class="clickable">State</a></th>
+            <th><a (click)="sort('zip')" class="clickable">ZipCode</a></th>
+            <th><a (click)="sort('phone')" class="clickable">Phone</a></th>
+            <th><a (click)="sort('email')" class="clickable">Email</a></th>
+        </tr>
+        <tr *ngFor="let v of vendors | vendorSearch: searchCriteria | sort:sortCriteria:sortAsc">
+            <td>{{v.id}}</td>
+            <td>{{v.code}}</td>
+            <td>{{v.name}}</td>
+            <td>{{v.address}}</td>
+            <td>{{v.city}}</td>
+            <td>{{v.state}}</td>
+            <td>{{v.zip}}</td>
+            <td>{{v.phone}}</td>
+            <td>{{v.email}}</td>
+            <td>
+                <a routerLink="/vendor/detail/{{v.id}}">Detail</a>  |  
+                <a routerLink="/vendor/edit/{{v.id}}">Edit</a>
+            </td>
+        </tr>
+    </table>
+</div>
