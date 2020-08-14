@@ -14,6 +14,7 @@
             <th><a (click)="sort('unit')" class="clickable">Unit</a></th>
             <th><a (click)="sort('photoPath')" class="clickable">Photopath</a></th>
             <th><a (click)="sort('vendorId')" class="clickable">VendorName</a></th>
+            <th>Actions</th>
         </tr>
         <tr *ngFor=" let p of products | productSearch: searchCriteria | sort:sortCriteria:sortAsc">
             <td>{{p.id}}</td>

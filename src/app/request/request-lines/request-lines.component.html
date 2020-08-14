@@ -1,2 +1,47 @@
 <app-menu></app-menu>
-<p>request-lines works!</p>
+<div id="component">
+    <span class="h3">{{pageTitle}}</span>
+    <span> | </span>
+    <a *ngIf="requestId" routerLink="/requestlines/create/{{requestId}}">New RequestLine</a>
+    <span> | </span>
+    <a routerLink="/request/list">Back to list</a>
+    <table *ngIf="request" class="table table-sm">
+        <tr>
+            <th>Id</th>
+            <th>Requesting User</th>
+            <th>Status</th>
+            <th>Description</th>
+            <th>Total</th>
+        </tr>
+        <tr>
+            <td>{{request.id}}</td>
+            <td><a routerLink="/user/detail/{{request.user.id}}">{{request.user.firstName}} {{request.user.lastName}}</a></td>
+            <td>{{request.status}}</td>
+            <td>{{request.description}}</td>
+            <td>{{request.total | currency}}</td>
+        </tr>
+    </table>
+    <p></p>
+    <table *ngIf="request" class="table table-sm">
+        <tr>
+            <th>RequestlineId</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+            <th>Actions</th>
+        </tr>
+        <tr *ngFor="let rl of request.requestLines">
+            <td>{{rl.id}}</td>
+            <td>{{rl.product.name}}</td>
+            <td>{{rl.quantity}}</td>
+            <td>{{rl.product.price * rl.quantity | currency}}</td>
+            <td>
+                <a routerLink="/requestlines/edit/{{rl.id}}">Edit</a>  |  
+                <a (click)="delete(rl.id)" class="blue">Delete</a>
+                <span *ngIf="showVerify">  |  
+                    <a (click)="verify(rl.id)" class="blue">Verify</a>
+                </span>
+            </td>
+        </tr>
+    </table>
+</div>

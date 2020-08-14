@@ -10,7 +10,7 @@ import { ProductService } from '../product.service'
 export class ProductListComponent implements OnInit {
 
   products: Product[];
-  sortCriteria: string="name";
+  sortCriteria: string="id";
   sortAsc: boolean=true;
   searchCriteria:string='';
   pageTitle: string="Product List";

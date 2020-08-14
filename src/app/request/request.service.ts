@@ -12,6 +12,19 @@ export class RequestService {
 
   constructor(private http: HttpClient) { }
 
+  approve(request:Request): Observable<any> {
+    return this.http.put(`${baseurl}/approve`, request) as Observable<any>;
+  }
+  reject(request:Request): Observable<any> {
+    return this.http.put(`${baseurl}/reject`, request) as Observable<any>;
+  }
+  autorev(request:Request): Observable<any> {
+    return this.http.put(`${baseurl}/review`, request) as Observable<any>
+  }
+  reviews(id:number): Observable<Request[]> {
+    return this.http.get(`${baseurl}/review/${id}`) as Observable<Request[]>;
+  }
+
   list(): Observable<Request[]> {
     return this.http.get(`${baseurl}`) as Observable<Request[]>;
   }

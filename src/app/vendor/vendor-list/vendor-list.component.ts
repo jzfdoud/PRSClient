@@ -10,7 +10,7 @@ import { VendorService } from '../vendor.service'
 export class VendorListComponent implements OnInit {
 
   vendors: Vendor[];
-  sortCriteria: string="name";
+  sortCriteria: string="id";
   sortAsc: boolean=true;
   searchCriteria:string='';
   pageTitle: string="Vendor List";

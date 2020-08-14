@@ -15,7 +15,7 @@ export class RequestSearchPipe implements PipeTransform {
         r.id.toString().includes(searchCriteria)
         || r.description.toLowerCase().includes(searchCriteria)
         || r.justification.toLowerCase().includes(searchCriteria)
-        || r.rejectionReason.toLowerCase().includes(searchCriteria)
+        || r.rejectionReason != null && r.rejectionReason.toLowerCase().includes(searchCriteria)
         || r.deliveryMode.toLowerCase().includes(searchCriteria)
         || r.status.toLowerCase().includes(searchCriteria)
         || r.total.toString().includes(searchCriteria)

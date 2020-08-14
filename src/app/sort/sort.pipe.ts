@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-
 @Pipe({
   name: 'sort'
 })
@@ -18,7 +17,6 @@ export class SortPipe implements PipeTransform {
       if(x > y) return asc ? 1: -1;
       else
         return asc? -1:1;
-
     }
 
     return arr.sort(sortFn);

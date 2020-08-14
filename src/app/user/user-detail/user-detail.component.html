@@ -2,7 +2,9 @@
 <div id="component">
     <span class="h3">{{pageTitle}}</span>
     <span> | </span>
-    <a routerLink="/user/list">Back to list</a>
+    <a routerLink="/user/list">Back to User-list</a>
+    <span>  |  </span>
+    <a routerLink="/request/list">Back to Request-list</a>
     <table *ngIf="user" class="table table-sm">
         <tr>
             <th>Id</th>

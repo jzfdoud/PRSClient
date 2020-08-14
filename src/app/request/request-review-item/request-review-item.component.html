@@ -1,2 +1,45 @@
 <app-menu></app-menu>
-<p>request-review-item works!</p>
+<div id="component">
+    <span class="h3">{{pageTitle}}</span>
+    <span> | </span>
+    <a routerLink="/request/list">Back to list</a>
+    <table *ngIf="request" class="table table-sm">
+        <tr>
+            <th>Id</th>
+            <th>Requesting User</th>
+            <th>Status</th>
+            <th>Description</th>
+            <th>Total</th>
+        </tr>
+        <tr>
+            <td>{{request.id}}</td>
+            <td><a routerLink="/user/detail/{{request.user.id}}">{{request.user.firstName}} {{request.user.lastName}}</a></td>
+            <td>{{request.status}}</td>
+            <td>{{request.description}}</td>
+            <td>{{request.total | currency}}</td>
+        </tr>
+    </table>
+    <p></p>
+    <table *ngIf="request" class="table table-sm">
+        <tr>
+            <th>RequestlineId</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+        </tr>
+        <tr *ngFor="let rl of request.requestLines">
+            <td>{{rl.id}}</td>
+            <td>{{rl.product.name}}</td>
+            <td>{{rl.quantity}}</td>
+            <td>{{rl.product.price * rl.quantity | currency}}</td>
+        </tr>
+                <tr>  
+                    <button (click)="approve(request.id)" class="blue">Approve</button>  |  
+                    <button (click)="reject(request.id)" class="blue">Reject</button>
+                    <span *ngIf="showVerify">  |  
+                        <input [(ngModel)]="request.rejectionReason">  |
+                        <button (click)="verify(request.id)" class="blue">Verify</button>
+                    </span>
+                </tr>
+    </table>
+</div>

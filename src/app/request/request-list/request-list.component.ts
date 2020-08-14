@@ -11,7 +11,7 @@ import { RequestService } from '../request.service'
 export class RequestListComponent implements OnInit {
 
   requests: Request[];
-  sortCriteria:string="desccription";
+  sortCriteria:string="id";
   sortAsc:boolean=true;
   searchCriteria: string='';
   pageTitle: string= "Request List"

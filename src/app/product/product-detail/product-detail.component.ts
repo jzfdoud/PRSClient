@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../product.class';
 import { ProductService } from '../product.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Vendor } from 'src/app/vendor/vendor.class';
+import { VendorService } from 'src/app/vendor/vendor.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -11,6 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ProductDetailComponent implements OnInit {
 
   product: Product = null;
+  vendors: Vendor[]=[];
   pageTitle: string = 'Product Detail';
   showDelete: boolean = false;
 
@@ -32,6 +35,7 @@ export class ProductDetailComponent implements OnInit {
 
   constructor(
     private productsvc: ProductService,
+    private vendorsvc: VendorService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
@@ -45,6 +49,15 @@ export class ProductDetailComponent implements OnInit {
       },
       err=>{
         console.error(err);
+      }
+    );
+
+    this.vendorsvc.list().subscribe(
+      res=>{
+        this.vendors = res as Vendor[];
+      },
+      err=>{
+        console.error(err)
       }
     );
   }

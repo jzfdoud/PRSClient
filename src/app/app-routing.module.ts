@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { from } from 'rxjs';
 import { Routes, RouterModule } from '@angular/router';
 import { E404Component } from './core/e404/e404.component';
 import { UserListComponent } from './user/user-list/user-list.component';
@@ -63,8 +62,8 @@ const routes: Routes = [
   { path: 'request/lines/:id', component: RequestLinesComponent },
   { path: 'request/reviews', component: RequestReviewsComponent },
   { path: 'request/reviewitem/:id', component: RequestReviewItemComponent },
-  { path: 'requestline/create', component: RequestlineCreateComponent },
-  { path: 'requestline/edit/:id', component: RequestlineEditComponent },
+  { path: 'requestlines/create/:id', component: RequestlineCreateComponent },
+  { path: 'requestlines/edit/:id', component: RequestlineEditComponent },
   
   // { path: '**', component:HomeComponent},
 
