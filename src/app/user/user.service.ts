@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from './user.class';
 
-// const baseurl = "http://jzfdoudc.w30.wh-2.com/prsdbserver/api/users";
-const baseurl = "http://localhost:59525/api/users";
+const baseurl = "http://jzfdoudc.w30.wh-2.com/prsdbserver/api/users";
+//const baseurl = "http://localhost:59525/api/users";
 @Injectable({
   providedIn: 'root'
 })

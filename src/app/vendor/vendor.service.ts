@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Vendor } from './vendor.class'
 
-const baseurl = "http://localhost:59525/api/vendors";
+const baseurl = "http://jzfdoudc.w30.wh-2.com/prsdbserver/api/vendors"
+//const baseurl = "http://localhost:59525/api/vendors";
 
 @Injectable({
   providedIn: 'root'
