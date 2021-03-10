@@ -16,7 +16,7 @@ export class MenuComponent implements OnInit {
 
   menus: Menu[]=[
     new Menu("Home", "/core/home"),
-    new Menu("About", "/core/about"),
+    new Menu("Resume", "/core/about"),
     new Menu("User", "/user/list"),
     new Menu("Vendor", "/vendor/list"),
     new Menu("Product", "/product/list"),
