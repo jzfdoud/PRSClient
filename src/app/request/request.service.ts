@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Request } from '../request/request.class'
 
-const baseurl = "http://jzfdoudc.w30.wh-2.com/prsdbserver/api/requests"
-//const baseurl = "http://localhost:59525/api/requests"
+//const baseurl = "http://jzfdoudc.w30.wh-2.com/prsserver/api/requests"
+const baseurl = "http://localhost:59525/api/requests"
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +22,15 @@ export class RequestService {
   autorev(request:Request): Observable<any> {
     return this.http.put(`${baseurl}/review`, request) as Observable<any>
   }
+  // approve(request:Request): Observable<any> {
+  //   return this.http.post(`${baseurl}/approve`, request) as Observable<any>;
+  // }
+  // reject(request:Request): Observable<any> {
+  //   return this.http.post(`${baseurl}/reject`, request) as Observable<any>;
+  // }
+  // autorev(request:Request): Observable<any> {
+  //   return this.http.post(`${baseurl}/review`, request) as Observable<any>
+  // }
   reviews(id:number): Observable<Request[]> {
     return this.http.get(`${baseurl}/review/${id}`) as Observable<Request[]>;
   }
@@ -41,6 +50,9 @@ export class RequestService {
   change(request:Request): Observable<any> {
     return this.http.put(`${baseurl}/${request.id}`, request) as Observable<any>;
   }
+  // change(request:Request): Observable<any> {
+  //   return this.http.post(`${baseurl}/update/${request.id}`, request) as Observable<any>;
+  // }
 
   remove(id:number): Observable<Request> {
     return this.http.delete(`${baseurl}/${id}`) as Observable<Request>;

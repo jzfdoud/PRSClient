@@ -23,8 +23,17 @@ export class MenuComponent implements OnInit {
     new Menu("Request", "/request/list"),
     new Menu("Review", "/request/reviews"),
     new Menu("Login", "/user/login")
-    
   ];
+  menus1: Menu[]=[
+    new Menu("Home", "/core/home"),
+    new Menu("Resume", "/core/about"),
+    new Menu("User", "/user/list"),
+    new Menu("Vendor", "/vendor/list"),
+    new Menu("Product", "/product/list"),
+    new Menu("Request", "/request/list"),
+    new Menu("Review", "/request/reviews")
+  ];
+
   constructor(
     private syssvc: SystemService
   ) { }
@@ -34,7 +43,10 @@ export class MenuComponent implements OnInit {
     if(this.syssvc.loggedInUser !=null) {
       this.firstname = this.syssvc.loggedInUser.firstName;
       this.lastname = this.syssvc.loggedInUser.lastName;
+      // return men
     }
+
+    // if(this.syssvc.loggedInUser = null){}
   }
 
 }

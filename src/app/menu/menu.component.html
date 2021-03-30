@@ -1,14 +1,15 @@
-<div>
-    <div id="left">
-        <nav>
-            <ul>
-                <li *ngFor="let m of menus">
-                    <a routerLink="{{m.route}}"> {{m.display}} </a>
+
+        <!-- <nav class="navbar navbar-light" role="navigation"> -->
+            <ul class="nav nav-pills d-flex justify-content-start">
+                <li *ngFor="let m of menus" class="nav-item" role="presentation">
+                    <a routerLink="{{m.route}}" class="nav-link"  aria-current="{{m.display}}"> {{m.display}} </a>
+                    <!-- <button class="nav-link active" id="current-tab" data-bs-toggle="tab" data-bs-target="routerLink='{{m.route}}'" type="button" role="tab" aria-controls="tabs" aria-selected="true">{{m.display}}</button> -->
                 </li>
+                <!-- <li class="nav-item d-flex justify-content-end"><a class="nav-link disabled">{{firstname}} {{lastname}}</a></li> -->
             </ul>
-        </nav>
-    </div>
-    <div id="right">
-        <span>{{firstname}} {{lastname}}</span>
-    </div>
-</div>
+            <div class="dropdown-divider"></div>
+            <div class="d-flex justify-content-end">
+                <span>{{firstname}} {{lastname}}</span>
+            </div>
+         
+        <!-- </nav> -->

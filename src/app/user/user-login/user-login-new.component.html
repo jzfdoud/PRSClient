@@ -1,0 +1,37 @@
+
+<div class="dropdown-menu">
+    <span class="h4">Create New User</span><small><a routerLink="/user/login">Back to login</a></small>
+        <form class="px-4 py-3">
+            <span class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input [(ngModel)]="user.userName" type="text" class="form-control col-sm-10" id="username" placeholder="ProgramingSuperStar">
+        </span>
+        <br>
+        <span>
+            <label for="password" class="form-label">Password</label>
+            <input [(ngModel)]="user.password" type="password" class="form-control col-sm-10" id="password" placeholder="Password">
+        </span>
+        <br>
+        <span class="mb-3">
+            <label for="fname" class="form-label">First Name</label>
+            <input [(ngModel)]="user.firstName" type="text" class="form-control col-sm-10" id="fname" placeholder="First Name">
+        </span>
+        <br>
+        <span class="mb-3">
+            <label for="lname" class="form-label">Last Name</label>
+            <input [(ngModel)]="user.lastName" type="text" class="form-control col-sm-10" id="lname" placeholder="Last Name">
+        </span>
+        <br>
+        <span class="mb-3">
+            <label for="pnum" class="form-label">Phone</label>
+            <input [(ngModel)]="user.phone" type="text" class="form-control col-sm-10" id="pnum" placeholder="(optional)">
+        </span>
+        <br>
+        <span class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input [(ngModel)]="user.email" type="text" class="form-control col-sm-10" id="email" placeholder="(optional)">
+        </span>
+        <br>
+        <button (click)="save()" class="btn btn-primary col-2">Finish Sign-up</button>
+        </form>
+</div>

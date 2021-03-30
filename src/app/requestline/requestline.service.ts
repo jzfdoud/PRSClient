@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Requestline } from './requestline.class';
 
-const baseurl = "http://jzfdoudc.w30.wh-2.com/prsdbserver/api/requestlines"
-//const baseurl="http://localhost:59525/api/requestlines";
+//const baseurl = "http://jzfdoudc.w30.wh-2.com/prsserver/api/requestlines"
+const baseurl="http://localhost:59525/api/requestlines";
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +28,9 @@ export class RequestlineService {
   change(requestline:Requestline): Observable<any> {
     return this.http.put(`${baseurl}/${requestline.id}`, requestline) as Observable<any>;
   }
+  // change(requestline:Requestline): Observable<any> {
+  //   return this.http.post(`${baseurl}/update/${requestline.id}`, requestline) as Observable<any>;
+  // }
 
   remove(id:number): Observable<Requestline> {
     return this.http.delete(`${baseurl}/${id}`) as Observable<Requestline>;

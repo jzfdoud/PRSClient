@@ -1,22 +1,16 @@
 <app-menu></app-menu>
 <div id="component">
-    <span class="h3">{{pageTitle}}</span>
+    <span class="h4">{{pageTitle}} {{requestId}}</span>
     <span> | </span>
     <a routerLink='/request/list'>Back to list</a>
-    <table *ngIf="requestline" class="table table-sm">
-        <!-- <tr>
-            <th>Id</th>
-            <td><input [(ngModel)]="requestline.id" type="text"></td>
-        </tr> -->
-        <!-- <tr>
-            <th>RequestId</th>
-            <td><input [(ngModel)]="requestline.requestId" type="text"></td>
-        </tr> -->
+    <table *ngIf="requestline" class="table">
         <tr>
             <th>Product</th>
-            <td>
-                <select [(ngModel)]="requestline.productId">
-                    <option *ngFor="let p of products" value="{{p.id}}">{{p.name}}</option>
+            <td [(ngModel)]="requestline.productId">
+                <select class="form-select" aria-placeholder="Available Products" role="grid">
+                    <optgroup id="vend" *ngFor="let p of products" label="{{p.vendor.name}}" role="group" aria-owns="prod">
+                            <option id="prod" *ngIf="p.vendorId" value="{{p.id}}" role="gridcell">{{p.name}}</option>
+                    </optgroup>
                 </select>
             </td>
         </tr>
@@ -24,10 +18,8 @@
             <th>Quantity</th>
             <td><input [(ngModel)]="requestline.quantity" type="number"></td>
         </tr>
-        <tr>
-            <td colspan="2">
-                <button (click)="save()" class="btn btn-primary">Save</button>
-            </td>
-        </tr>
     </table>
+
+                <button (click)="save()" class="btn btn-primary">Save</button>
+ 
 </div>

@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Vendor } from './vendor.class'
 
-const baseurl = "http://jzfdoudc.w30.wh-2.com/prsdbserver/api/vendors"
-//const baseurl = "http://localhost:59525/api/vendors";
+//const baseurl = "http://jzfdoudc.w30.wh-2.com/prsserver/api/vendors"
+const baseurl = "http://localhost:59525/api/vendors";
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +27,9 @@ export class VendorService {
   change(vendor:Vendor): Observable<any> {
     return this.http.put(`${baseurl}/${vendor.id}`, vendor) as Observable<any>;
   }
+  // change(vendor:Vendor): Observable<any> {
+  //   return this.http.post(`${baseurl}/update/${vendor.id}`, vendor) as Observable<any>;
+  // }
 
   remove(id:number): Observable<Vendor> {
     return this.http.delete(`${baseurl}/${id}`) as Observable<Vendor>;

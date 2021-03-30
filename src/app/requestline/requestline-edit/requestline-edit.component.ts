@@ -4,6 +4,8 @@ import { Product } from 'src/app/product/product.class';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RequestlineService } from '../requestline.service';
 import { ProductService } from 'src/app/product/product.service';
+import { Vendor } from 'src/app/vendor/vendor.class';
+import { VendorService } from 'src/app/vendor/vendor.service';
 
 @Component({
   selector: 'app-requestline-edit',
@@ -15,12 +17,15 @@ export class RequestlineEditComponent implements OnInit {
   pageTitle:string="Edit Requestline";
   requestline: Requestline=null;
   products: Product[]=[];
+  vendors: Vendor[]=[];
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private requestlinesvc: RequestlineService,
-    private productsvc: ProductService
+    private productsvc: ProductService,
+    private vendorsvc: VendorService
+
   ) { }
 
   save(): void{
@@ -52,6 +57,15 @@ export class RequestlineEditComponent implements OnInit {
     this.productsvc.list().subscribe(
       res=>{
         this.products = res as Product[];
+      },
+      err=>{
+        console.error(err);
+      }
+    );
+
+    this.vendorsvc.list().subscribe(
+      res=>{
+        this.vendors = res as Vendor[];
       },
       err=>{
         console.error(err);

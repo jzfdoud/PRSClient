@@ -12,7 +12,7 @@ import { RequestlineService } from '../../requestline/requestline.service'
 })
 export class RequestLinesComponent implements OnInit {
 
-  pageTitle:string="RequestLine";
+  pageTitle:string="Request #";
   requestId: number=0;
   request: Request=null;
   requestline: Requestline;

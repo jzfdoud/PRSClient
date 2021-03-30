@@ -1,20 +1,25 @@
-<form>
-    
-    <table>
-        <label class="h4">{{msg}}</label>
-        <tr>
-            <th>Username:</th>
-            <td><input [(ngModel)]="username" name="username" autocomplete="username" type="text"></td>
-        </tr>
-        <tr>
-            <th>Password:</th>
-            <td><input [(ngModel)]="password" name="password" autocomplete="current-password" type="password"></td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <button (click)="login()" class="btn btn-primary">Login</button>
-            </td>
-        </tr>
-    </table>
-    
+<span class="position-absolute top-80 start-50 translate-middle">Bootcamp Capstone - PRS</span>
+<span class="col-sm-2 position-absolute top-80 start-50 translate-middle">Login!</span>
+<form class="col-sm-2 position-absolute top-50 start-50 translate-middle">
+    <span>
+        <label for="username" class="form-label">Username</label>
+        <input [(ngModel)]="username" name="username" autocomplete="username" type="text" class="form-control"
+        id="username" placeholder="ProgramingSuperStar">
+    </span>
+    <br>
+    <span>
+        
+        <label for="password" class="form-label">Password</label>
+        <input [(ngModel)]="password" name="password" autocomplete="current-password" type="password"
+        class="form-control" id="password" placeholder="Password">
+    </span>
+    <label class="h4">{{msg}}</label>
+    <br>
+    <button (click)="login()" type="submit" class="btn btn-primary">Sign in</button>
+    <br>
+    <br>
+    <br>
+    <div class="dropdown-divider"></div>
+    <small><a class="col-sm-2" href="user-login-new.component.html">New User? Sign up</a></small>
 </form>
+<!-- <a class="dropdown-item" href="#">Forgot password?</a> -->

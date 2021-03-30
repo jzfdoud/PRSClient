@@ -13,7 +13,8 @@
         </tr>
         <tr>
             <td>{{request.id}}</td>
-            <td><a routerLink="/user/detail/{{request.user.id}}">{{request.user.firstName}} {{request.user.lastName}}</a></td>
+            <td><a routerLink="/user/detail/{{request.user.id}}">{{request.user.firstName}}
+                    {{request.user.lastName}}</a></td>
             <td>{{request.status}}</td>
             <td>{{request.description}}</td>
             <td>{{request.total | currency}}</td>
@@ -33,13 +34,34 @@
             <td>{{rl.quantity}}</td>
             <td>{{rl.product.price * rl.quantity | currency}}</td>
         </tr>
-                <tr>  
-                    <button (click)="approve(request.id)" class="blue">Approve</button>  |  
-                    <button (click)="reject(request.id)" class="blue">Reject</button>
-                    <span *ngIf="showVerify">  |  
-                        <input [(ngModel)]="request.rejectionReason">  |
-                        <button (click)="verify(request.id)" class="blue">Verify</button>
-                    </span>
-                </tr>
+        <br>
+        <br>
+        <!-- <div>
+            <button (click)="approve(request.id)" type="button" class="btn btn-success me-2">Approve</button>
+            <div class="btn-group-vertical co">
+                <button (click)="reject(request.id)" type="button" class="btn btn-warning">Reject</button>
+                <span *ngIf="showVerify">
+                    <textarea [(ngModel)]="request.rejectionReason" class="form-control" rows="2"></textarea>
+                    <button (click)="verify(request.id)" type="button" class="btn btn-danger">Verify</button>
+                </span>
+            </div>
+        </div> -->
+
     </table>
+    <div *ngIf="request" class="btn-group" role="group">
+        <button (click)="approve(request.id)" type="button" class="btn btn-success me-2">Approve</button>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <button (click)="reject(request.id)" id="reject" type="button" class="btn btn-warning" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Reject
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="reject">
+                <span *ngIf="showVerify" class="dropdown-item">
+                    <textarea [(ngModel)]="request.rejectionReason" class="form-control" rows="4" required are
+                        placeholder="Reason for rejection"></textarea>
+                    <button (click)="verify(request.id)" type="button" class="btn btn-danger">Verify</button>
+                </span>
+            </ul>
+        </div>
+    </div>
 </div>

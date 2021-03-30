@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from './user.class';
 
-const baseurl = "http://jzfdoudc.w30.wh-2.com/prsdbserver/api/users";
-//const baseurl = "http://localhost:59525/api/users";
+//const baseurl = "http://jzfdoudc.w30.wh-2.com/prsserver/api/users";
+const baseurl = "http://localhost:59525/api/users";
 @Injectable({
   providedIn: 'root'
 })
@@ -30,6 +30,9 @@ export class UserService {
   change(user:User): Observable<any> {
     return this.http.put(`${baseurl}/${user.id}`, user) as Observable<any>;
   }
+  // change(user:User): Observable<any> {
+  //   return this.http.post(`${baseurl}/update/${user.id}`, user) as Observable<any>;
+  // }
 
   remove(id:number): Observable<User> {
     return this.http.delete(`${baseurl}/${id}`) as Observable<User>;

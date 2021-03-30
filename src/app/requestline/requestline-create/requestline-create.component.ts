@@ -6,6 +6,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { RequestlineService } from '../requestline.service';
 import { RequestService } from 'src/app/request/request.service';
 import { ProductService } from 'src/app/product/product.service';
+import { Vendor } from 'src/app/vendor/vendor.class';
+import { VendorService } from 'src/app/vendor/vendor.service';
 
 @Component({
   selector: 'app-requestline-create',
@@ -14,10 +16,11 @@ import { ProductService } from 'src/app/product/product.service';
 })
 export class RequestlineCreateComponent implements OnInit {
 
-  pageTitle:string="New Requestline Item";
+  pageTitle:string="Add New Item to Request #";
   requestline: Requestline= new Requestline();
   requests: Request[]=[];
   products: Product[]=[];
+  vendors: Vendor[]=[];
   requestId: number;
 
   constructor(
@@ -25,7 +28,8 @@ export class RequestlineCreateComponent implements OnInit {
     private route: ActivatedRoute,
     private rlinesvc: RequestlineService,
     private requestsvc: RequestService,
-    private productsvc: ProductService
+    private productsvc: ProductService,
+    private vendorsvc: VendorService
   ) { }
 
   save(): void {
@@ -55,6 +59,14 @@ export class RequestlineCreateComponent implements OnInit {
     this.productsvc.list().subscribe(
       res=>{
         this.products = res as Product[];
+      },
+      err=>{
+        console.error(err);
+      }
+    );
+    this.vendorsvc.list().subscribe(
+      res=>{
+        this.vendors = res as Vendor[];
       },
       err=>{
         console.error(err);

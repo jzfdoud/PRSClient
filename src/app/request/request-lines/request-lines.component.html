@@ -1,47 +1,66 @@
 <app-menu></app-menu>
 <div id="component">
-    <span class="h3">{{pageTitle}}</span>
-    <span> | </span>
-    <a *ngIf="requestId" routerLink="/requestlines/create/{{requestId}}">New RequestLine</a>
+    <span class="h3">{{pageTitle}} {{request.id}}</span>
+    <br>
+    <a *ngIf="requestId" routerLink="/requestlines/create/{{requestId}}">Add to current request</a>
     <span> | </span>
     <a routerLink="/request/list">Back to list</a>
-    <table *ngIf="request" class="table table-sm">
-        <tr>
-            <th>Id</th>
-            <th>Requesting User</th>
-            <th>Status</th>
-            <th>Description</th>
-            <th>Total</th>
-        </tr>
-        <tr>
-            <td>{{request.id}}</td>
-            <td><a routerLink="/user/detail/{{request.user.id}}">{{request.user.firstName}} {{request.user.lastName}}</a></td>
-            <td>{{request.status}}</td>
-            <td>{{request.description}}</td>
-            <td>{{request.total | currency}}</td>
-        </tr>
-    </table>
-    <p></p>
-    <table *ngIf="request" class="table table-sm">
-        <tr>
-            <th>RequestlineId</th>
-            <th>Product</th>
-            <th>Quantity</th>
-            <th>Subtotal</th>
-            <th>Actions</th>
-        </tr>
-        <tr *ngFor="let rl of request.requestLines">
-            <td>{{rl.id}}</td>
-            <td>{{rl.product.name}}</td>
-            <td>{{rl.quantity}}</td>
-            <td>{{rl.product.price * rl.quantity | currency}}</td>
-            <td>
-                <a routerLink="/requestlines/edit/{{rl.id}}">Edit</a>  |  
-                <a (click)="delete(rl.id)" class="blue">Delete</a>
-                <span *ngIf="showVerify">  |  
-                    <a (click)="verify(rl.id)" class="blue">Verify</a>
-                </span>
-            </td>
-        </tr>
-    </table>
+    <br>
+    <br>
+    <table *ngIf="request" class="table">
+<thead>
+    <tr>
+        <!-- <th>Request #</th> -->
+        <th>Requesting User</th>
+        <th>Status</th>
+        <th>Description</th>
+        <th>Total</th>
+    </tr>
+    <tr>
+        <!-- <td>{{request.id}}</td> -->
+        <td><a routerLink="/user/detail/{{request.user.id}}">{{request.user.firstName}} {{request.user.lastName}}</a></td>
+        <td>{{request.status}}</td>
+        <td>{{request.description}}</td>
+        <td>{{request.total | currency}}</td>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td colspan="4">
+    
+            <table class="table mb-0 table-striped">
+                <tr>
+                    <!-- <th>RequestlineId</th> -->
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                    <th>Actions</th>
+                </tr>
+                <tr *ngFor="let rl of request.requestLines">
+                    <!-- <td>{{rl.id}}</td> -->
+                    <td>{{rl.product.name}}</td>
+                    <td>{{rl.quantity}}</td>
+                    <td>{{rl.product.price * rl.quantity | currency}}</td>
+                    <td>
+                        <button routerLink="/requestlines/edit/{{rl.id}}" class="btn btn-secondary">Edit</button>  |  
+                        <div class="d-grid gap-2 col-6 mx-auto">
+                        <button (click)="reject(request.id)" id="reject" type="button" class="btn btn-warning" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Reject
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="reject">
+                            <span *ngIf="showVerify" class="dropdown-item">
+                                <textarea [(ngModel)]="request.rejectionReason" class="form-control" rows="4" required are
+                                    placeholder="Reason for rejection"></textarea>
+                                <button (click)="verify(request.id)" type="button" class="btn btn-danger">Verify</button>
+                            </span>
+                        </ul>
+                    </div>
+                    </td>
+                </tr>
+            </table>
+        </td>
+      </tr>
+</tbody>
+</table>
 </div>
